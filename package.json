@@ -1,7 +1,7 @@
 {
-  "name": "f",
+  "name": "@d-exclaimation/f",
   "version": "1.0.0",
-  "description": "",
+  "description": "Functional programming pipe pattern for TypeScript / JavaScript.",
   "main": "dist/index.js",
   "scripts": {
     "start": "node .",
@@ -9,12 +9,20 @@
     "build": "tsc"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "d-exclaimation",
+  "license": "MIT",
   "devDependencies": {
     "typescript": "^4.8.4"
   },
   "dependencies": {
     "rimraf": "^3.0.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/d-exclaimation/f.git"
+  },
+  "bugs": {
+    "url": "https://github.com/d-exclaimation/f/issues"
+  },
+  "homepage": "https://github.com/d-exclaimation/f#readme"
 }
