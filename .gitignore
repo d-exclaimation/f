@@ -1,0 +1,5 @@
+dist/
+.vscode/
+.idea/
+**/.env
+**/.DS_Store
