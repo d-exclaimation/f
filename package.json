@@ -3,19 +3,15 @@
   "version": "0.1.0",
   "description": "Functional programming pipe pattern for TypeScript / JavaScript.",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "start": "node .",
-    "prebuild": "rimraf dist",
-    "build": "tsc"
+    "prepublish": "tsc"
   },
   "keywords": [],
   "author": "d-exclaimation",
   "license": "MIT",
   "devDependencies": {
     "typescript": "^4.8.4"
-  },
-  "dependencies": {
-    "rimraf": "^3.0.2"
   },
   "repository": {
     "type": "git",
