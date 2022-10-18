@@ -7,7 +7,9 @@
   "scripts": {
     "prepublish": "tsc"
   },
-  "keywords": [],
+  "keywords": [
+    "TypeScript", "Functional", "pipe", "Functional programming"
+  ],
   "author": "d-exclaimation",
   "license": "MIT",
   "devDependencies": {

@@ -6,7 +6,7 @@
 //
 
 /**
- * Pipe pattern from the functional programming world
+ * Cascade pattern from the functional programming world
  */
 export class F<X> {
   private constructor(
@@ -14,7 +14,7 @@ export class F<X> {
   ){}
 
   /**
-   * Pipe the value into a given function and put the result into another F
+   * Cascade the value into a given function and put the result into another F
    * @param g Function to pipe the value into
    * @returns A new F with the return value of the function
    */
@@ -33,7 +33,7 @@ export class F<X> {
   }
 
   /**
-   * Pipe the value into a given function and put the result into another F
+   * Cascade the value into a given function and put the result into another F
    * @param g Function to pipe the value into
    * @returns A new F with the return value of the function
    */
@@ -63,7 +63,7 @@ export class F<X> {
   }
 
   /**
-   * Pipe a predicate
+   * Cascade a predicate
    * @param p Predicate to apply the value
    * @returns The result of the predicate
    */
@@ -72,7 +72,7 @@ export class F<X> {
   }
 
   /**
-   * Pipe a void function to the wrapped value
+   * Cascade a void function to the wrapped value
    * @param z The void function to pipe
    */
   public z(z: (x: X) => void): void {
