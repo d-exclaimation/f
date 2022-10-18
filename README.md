@@ -2,11 +2,17 @@
 
 Functional programming pipe pattern for TypeScript / JavaScript.
 
+## Setup
+
+```sh
+npm i @d-exclaimation/f
+```
+
 
 ## Usage/Examples
 
 ```typescript
-import { f } from '@dexclaimation/f'
+import { f } from '@d-exclaimation/f'
 
 const abs = (num: number): number 
   => Math.abs(num);
