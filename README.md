@@ -9,37 +9,73 @@ npm i @d-exclaimation/f
 ```
 
 
-## Usage/Examples
+## Usage
+
+### Pipe functions in sequence
 
 ```typescript
-import { f } from '@d-exclaimation/f'
+import { f, F } from '@d-exclaimation/f'
 
-const abs = (num: number): number 
-  => Math.abs(num);
+// Instead of 
 
-const clamp = (num: number): number 
-  => Math.min(Math.max(0, num), 10);
-
-const convert = (num: number): string 
-  => `Converted to ${num}`;
+const res = func5(func4(func3(func2(func1(-111)))));
 
 // Pipe the return value of a function to another
 
 const res = f(-111)
-  .f(abs);
-  .f(clamp);
-  .f(convert)
+  .f(func1) 
+  .f(func2)
+  .f(func3)
+  .f(func4)
+  .f(func5)
   .x();
 
 // or
 
 const res = F.new(-111)
-  .next(abs);
-  .next(clamp);
-  .next(convert)
+  .next(func1)
+  .next(func2)
+  .next(func3)
+  .next(func4)
+  .next(func5)
   .end();
-
-console.log(res);
-// Converted to 10
 ```
 
+### Pipe predicate 
+
+```typescript
+const res = f(10)
+  .p(isPositive);
+
+// or
+
+const res = F.new(10)
+  .is(isPositive);
+
+console.log(res); // true
+```
+
+### Pipe async functions using higher order functions
+
+```typescript
+const res = f(new Promise<number>(r => r(10)))
+  .f(f.a(func1))
+  .f(f.a(func2))
+  .f(f.a(func3))
+  .f(f.a(func4))
+  .f(f.a(func5))
+  .end();
+
+// or 
+
+const res = F.new(new Promise<number>(r => r(10)))
+  .next(F.async(func1))
+  .next(F.async(func2))
+  .next(F.async(func3))
+  .next(F.async(func4))
+  .next(F.async(func5))
+  .end();
+
+
+const res1 = await res;
+```
