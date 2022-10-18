@@ -70,3 +70,6 @@ const res = F.x("Hello")
 
 console.log(res); // ["Hello", "World"]
 ```
+
+## Feedback
+If you have any feedback, feel free reach out at twitter [@d_exclaimation](https://www.twitter.com/d_exclaimation) or email at [thisoneis4business@gmail.com](thisoneis4business@gmail.com)/
