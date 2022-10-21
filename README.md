@@ -36,7 +36,7 @@ const res = F.x(-111)
   .f(func3)
   .f(func4)
   .f(func5)
-  .x();
+  .y();
 ```
 
 ### Cascade predicate 
