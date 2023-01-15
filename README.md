@@ -1,6 +1,6 @@
 # F
 
-Functional programming pipe pattern for TypeScript / JavaScript.
+Functional programming utilities for TypeScript / JavaScript.
 
 ## Setup
 
@@ -9,82 +9,77 @@ Functional programming pipe pattern for TypeScript / JavaScript.
 npm i @d-exclaimation/f
 ```
 
-### Import
-```typescript
-import { F } from '@d-exclaimation/f'
+## Usage
+
+### Pipe value, to multiple functions
+
+```ts
+import { pipe, f } from "@d-exclaimation/f";
+
+const addOne = (num: number) => num + 1;
+const doubled = (num: number) => num * 2;
+
+const res0 = pipe(
+  10, 
+  addOne, // 11
+  doubled // 22
+)
+
+console.log(res0) // [LOG]: 22
 ```
 
-## Guide
+### Non-higher order function compatibility
 
-### Cascade functions in sequence
+```ts
+import { pipe, f } from "@d-exclaimation/f";
 
-Instead of nesting one function with another which are hard to read
+const add = (num: number, other: number) => num + other;
+const apply = (num: number, opts: { adding: number, subtracting: number }) => num + opts.adding - opts.subtracting;
 
-```typescript
+const res1 = pipe(
+  10,
+  f(add, 2), // 12 (equivalent to `add(10, 2)`)
+  f(add, 10), // 22
+  f(apply, { adding: 10, subtracting: 9 }) // 23
+)
 
-const res = func5(func4(func3(func2(func1(-111)))));
-
+console.log(res1) // [LOG]: 23
 ```
 
-Cascade the return value of a function to another
+### Built-in modules
 
-```typescript
+#### Array / enumerable 
 
-const res = F.x(-111)
-  .f(func1) 
-  .f(func2)
-  .f(func3)
-  .f(func4)
-  .f(func5)
-  .x();
+```ts
+import { pipe, f, Enum } from "@d-exclaimation/f";
+
+const res2 = pipe(
+  Enum.range(1, 10), // [1, 2, 3, ..., 10]
+  Enum.enumerated, // [[1, 0], [2, 1], [3, 2], ..., [10, 9]]
+  Enum.map(([value, i]) => value * i), // [0, 2, 6, ..., 90]
+  Enum.filter(x => x > 0), // [2, 6, 12, ..., 90]
+  Enum.reduce(0, (acc, x) => acc + x) // 330
+);
+
+console.log(res2) // [LOG]: 330
 ```
 
-### Cascade predicate 
+#### Optional
 
-A predicate can be cascaded to immediately return the boolean result
+```ts
+import { pipe, f, Opt } from "@d-exclaimation/f";
 
-```typescript
-const res = F.x(10)
-  .p(isPositive);
+const res3 = pipe(
+  Opt.some(1), // 1
+  Opt.map((value) => value * 2) // 2
+  Opt.filter((value) => value >= 5) // null / undefined
+  Opt.match({ 
+    some: (value) => value + 1,
+    none: () => 5 
+  }) // 5
+);
 
-console.log(res); // true
-```
-
-### Cascade void / non-returning function 
-
-A non-returning function can be cascaded at the end as callback instead of manually retreiving the value
-
-```typescript
-F.x(10)
-  .z(console.log); // 10
-```
-
-### Cascade async functions using higher order functions
-
-Asynchrounous function can also be cascaded to allow better handling of `Promises`
-
-```typescript
-const res = F.x(new Promise<number>(r => r(10)))
-  .a(func1)
-  .a(func2)
-  .a(func3)
-  .a(func4)
-  .a(func5)
-  .y();
-
-const res1 = await res;
-```
-
-### Combine cascading
-
-`F`'s can be combined into another with the union value of both 
-
-```typescript
-const res = F.x("Hello")
-  .u(F.x("World"))
-  .y();
-
-console.log(res); // ["Hello", "World"]
+console.log(res3) // [LOG]: 5
 ```
 
 ## Feedback

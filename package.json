@@ -1,11 +1,12 @@
 {
   "name": "@d-exclaimation/f",
-  "version": "0.2.1",
-  "description": "Functional programming pipe pattern for TypeScript / JavaScript.",
+  "version": "1.0.0",
+  "description": "Functional programming utilities for TypeScript / JavaScript.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "build": "tsc"
   },
   "keywords": [
     "TypeScript", "Functional", "pipe", "Functional programming"
