@@ -14,12 +14,26 @@
 export type UnaryFunc<In, Out> = Func<[In], Out>;
 
 /**
+ * Represents a function that takes 1 input and return a boolean
+ *
+ * @template In Input type
+ */
+export type UnaryPredicate<In> = Predicate<[In]>;
+
+/**
  * Represents a function that takes n-ary inputs and return 1 output
  *
  * @template Ins Input types
  * @template Out Output type
  */
 export type Func<Ins extends any[], Out> = (...inputs: Ins) => Out;
+
+/**
+ * Represents a function that takes n-ary inputs and return boolean
+ *
+ * @template Ins Input types
+ */
+export type Predicate<Ins extends any[]> = (...inputs: Ins) => boolean;
 
 /**
  * Any type that represents a function that can take 0-n inputs and return any output
