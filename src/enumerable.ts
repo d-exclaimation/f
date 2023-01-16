@@ -8,6 +8,9 @@
 import { tup } from "./tup";
 import type { Func, UnaryFunc, UnaryPredicate } from "./types";
 
+/**
+ * A module for pipeable utilities for enumerables / arrays / sequences
+ */
 export namespace Enum {
   // MARK: - Instance functions
 
